@@ -56,7 +56,7 @@ public class countNoOfSubarrayWithSumK
             prefix_sum+= ar[i];
             int remove = k-prefix_sum;
             if(mapp.containsKey(remove)) count+= mapp.get(remove);
-            mapp.put(prefix_sum, 1);
+            mapp.put(prefix_sum, mapp.getOrDefault(prefix_sum,1)+1);
 
         }
         return count;
