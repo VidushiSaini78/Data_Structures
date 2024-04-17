@@ -2,32 +2,26 @@ import java.util.*;
 public class practise
 {
     public static void main(String[] args) {
-        int ar[] = {2,1,5,4,3,0,0};
+        int ar[] = {1,1,5};
         ar = nextPermutation(ar);
-        display(ar);
+        System.out.println(Arrays.toString(ar));
     }
-    static void display (int ar[])
-    {
-        for(int i=0 ; i<ar.length ; i++)
-        {
-            System.out.print(ar[i] + " ");
-        }
-        System.out.println();
-    }
+
     static int[] nextPermutation(int ar[])
     {
         int partitionIndex= -1;
-        for(int i =0 ; i<ar.length-1 ; i++)
+        for(int i =ar.length-1; i>0 ; i--)
         {
-            if(ar[i] <ar[i+1])
+            if(ar[i-1] <ar[i])
             {
-                partitionIndex = i;
+                partitionIndex = i-1;
                 break;
             }
         }
+
         if(partitionIndex==-1)
         {
-            Collections.reverse(Arrays.asList(ar));
+            reverse(ar);
             return ar;
         }
         int next_min =-1;
@@ -44,5 +38,17 @@ public class practise
         Arrays.sort(ar , partitionIndex+1 , ar.length);
         return ar;
     }
-
+    static void reverse(int ar[])
+    {
+        int i=0 ;
+        int  j =ar.length-1;
+        while(i<j)
+        {
+            int temp = ar[i];
+            ar[i] = ar[j];
+            ar[j] = temp;
+            i++;
+            j--;
+        }
+    }
 }
