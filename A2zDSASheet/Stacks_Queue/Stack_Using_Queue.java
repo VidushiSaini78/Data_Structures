@@ -2,26 +2,38 @@
 Implementing Stack using one queue is a optimized approach.
 */
 import java.util.*;
-class Stack {
-    Queue<Integer> q1 = new LinkedList<>();
-    void push(int data) {
-        int size = q1.size();
-        q1.add(data);
-        for (int i = 0; i < size; i++) {
-            q1.add(q1.remove());
+class MyStack {
+
+    private Queue<Integer> q;
+
+    public MyStack() {
+        q = new LinkedList<>();
+    }
+    
+    public void push(int x) {
+        q.add(x);
+        for(int i=0 ; i<q.size()-1 ; i++)
+        {
+            q.add(q.remove());
         }
     }
-    int pop() {
-        if (!q1.isEmpty())
-            return q1.poll();
+    
+    public int pop() {
+        if(!q.isEmpty())
+        return q.remove();
         return -1;
     }
-    int top() {
-        if (!q1.isEmpty())
-            return q1.peek();
+    
+    public int top() {
+        if(!q.isEmpty())
+        return q.peek();
         return -1;
     }
-    void display() {
+    
+    public boolean empty() {
+        return q.isEmpty();
+    }
+     void display() {
         System.out.println("Created Stack ->");
         for (int element : q1) {
             System.out.print(element + " ");
@@ -29,7 +41,6 @@ class Stack {
         System.out.println();
     }
 }
-
 public class Main{
     public static void main(String[] args) {
         Stack mystack = new Stack();
