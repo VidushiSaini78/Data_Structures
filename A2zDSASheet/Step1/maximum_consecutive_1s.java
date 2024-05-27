@@ -1,4 +1,3 @@
-package Arrays;
 // Problem Statement: Given an array that contains only 1 and 0 return the count of maximum consecutive ones in the array.
 import java.util.Scanner;
 public class maximum_consecutive
