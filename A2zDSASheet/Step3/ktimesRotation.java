@@ -34,6 +34,7 @@ public class KtimesRotate
         ar = rotate(ar , rotations,select);
         display(ar);
     }
+    // taking input
     static int[] takeInput(int size)
     {
         int temp[] = new int[size];
@@ -43,6 +44,7 @@ public class KtimesRotate
         }
         return temp;
     }
+    // Optimized Method TC : O(N) SC: O(1)
     static int[] rotate(int ar[] , int k , int value )
     {
         if(value==1)
@@ -61,6 +63,7 @@ public class KtimesRotate
         }
         return ar;
     }
+    // Reverse the array 
     static int[] reverse(int start , int end, int ar[])
     {
         while(start <end)
@@ -73,12 +76,33 @@ public class KtimesRotate
         }
         return ar;
     }
+    // Display Function 
     static void display(int ar[])
     {
         for(int i=0 ; i<ar.length; i++)
         {
             System.out.print(ar[i] + " ");
         }
+    }
+    // BRUTE FORCE : TC : O(N) SC: O(M)
+    static void rotate(int ar[] , int k)
+    {
+        int temp[] = new int[k];
+        for(int i=0 ; i<k ; i++)
+        {
+            temp[i] = ar[i];
+        }
+        int index= -1;
+        for(int i=k ; i<ar.length ; i++)
+        {
+            ar[++index] = ar[i];
+        }
+        index=-1;
+        for(int i= ar.length-k ; i<ar.length;i++)
+        {
+            ar[i] = temp[++index];
+        }
+        display(ar);
     }
 
 }
