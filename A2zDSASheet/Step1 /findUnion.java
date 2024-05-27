@@ -24,7 +24,19 @@ public class findUnion
         int ar1[] = takeInput(num1);
         merge(ar, ar1);
     }
-    static void merge(int array1[] , int array2[])
+    //TAKING INPUT
+    static int[] takeInput(int size)
+    {
+        int temp[] = new int[size];
+        for(int i=0 ; i<size ; i++)
+        {
+            temp[i] = input.nextInt();
+        }
+        return temp;
+    }
+
+    // SOLTUION 1 TC : O(N) SC: O(N+M)
+    static ArrayList<Integer> merge(int array1[] , int array2[])
     {
         //Two pointer approach
         int index1 = 0;
@@ -64,18 +76,44 @@ public class findUnion
                 ans.add(array2[index2]);
             index2++;
         }
-        for(int i=0 ; i<ans.size() ; i++)
-        {
-            System.out.print(ans.get(i) + " ");
-        }
+        return ans;
     }
-    static int[] takeInput(int size)
+    // Solution 2 TC: O(N+M)LOG(N+M) SC: O(N+M)
+    static ArrayList<Integer> union(int ar[] , int ar1[])
     {
-        int temp[] = new int[size];
-        for(int i=0 ; i<size ; i++)
+        HashMap<Integer , Integer> mapp = new HashMap<>();
+        for(int i=0 ; i<ar.length ; i++)
         {
-            temp[i] = input.nextInt();
+            mapp.put(ar[i] , mapp.getOrDefault(ar[i], 0) +1);
         }
-        return temp;
+        for(int j=0 ; j<ar1.length ; j++)
+        {
+            mapp.put(ar1[j] , mapp.getOrDefault(ar1[j] , 0) +1);
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(Integer ele : mapp.keySet())
+        {
+            ans.add(ele);
+        }
+        return ans;
+    }
+    // SOLTUON 3 TC : O(N+M) SC = O(N+M)
+    static ArrayList<Integer> union1(int ar[] , int ar1[])
+    {
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0 ; i<ar.length ; i++)
+        {
+            set.add(ar[i]);
+        }
+        for(int i=0 ; i<ar1.length ; i++)
+        {
+            set.add(ar1[i]);
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(Integer ele : set)
+        {
+            ans.add(ele);
+        }
+        return ans;
     }
 }
