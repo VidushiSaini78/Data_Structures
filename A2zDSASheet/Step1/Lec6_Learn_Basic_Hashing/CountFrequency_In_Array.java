@@ -15,13 +15,14 @@ Explanation Of Sample Input 1 :
 Frequency table:
 Number         Count 
  1                2
- 2              0
+ 2                0
  3                2
  4                2
  5                0
  6                0
 */
 public class Solution {
+    // Brute Force : TC : O(N) SC: O(N) used the temporary array
     public static int[] countFrequency(int n, int x, int []nums){
         int temp[] = new int[n];
         for(int i=0 ; i<nums.length; i++)
@@ -30,5 +31,20 @@ public class Solution {
             temp[nums[i]-1] += 1;
         }
         return temp;
+    }
+    // Optimized Approach : TC : O(N) SC : O(1)
+    public static void countFrequency(int ar[])
+    {
+        int count = 0;
+        HashMap<Integer , Integer> mapp = new HashMap<>();
+        for(int i=0 ; i<ar.length ; i++)
+        {
+            mapp.put(ar[i] , mapp.getOrDefault(ar[i],0)+1);
+        }
+        for(Integer ele : mapp.keySet())
+        {
+            System.out.println(ele  + "-> " + mapp.get(ele)); 
+        }
+        
     }
 }
