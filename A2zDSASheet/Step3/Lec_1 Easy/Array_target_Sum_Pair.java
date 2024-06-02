@@ -29,6 +29,7 @@ public class Array_target_Sum_Pair
         findPair(ar, target);
 
     }
+    //TC: O(N) SC:O(1)
     static void findPair(int ar[] , int target)
     {
         Arrays.sort(ar);
