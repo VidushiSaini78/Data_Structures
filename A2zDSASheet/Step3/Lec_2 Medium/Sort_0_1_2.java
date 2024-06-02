@@ -4,6 +4,7 @@ Brute Force : - Sorting technique (NlogN)
 Better Approach : Count no of 0 ,1 and 2 TC:- o(N) + o(N)
 Optimized Appraoch :- TC : O(N)
 */
+import java.util.Arrays;
 import java.util.Scanner;
 public class practise
 {
@@ -21,6 +22,7 @@ public class practise
             ar[i] = input.nextInt();
         }
     }
+    // TC : O(N) SC: O(1)
     static void sort(int ar[])
     {
         int Low = 0 ;
@@ -46,9 +48,7 @@ public class practise
 
             }
         }
-        for(int i=0; i<ar.length ; i++)
-        {
-            System.out.print(ar[i] + " ");
-        }
+        
+        System.out.println(Arrays.toString(ar));
     }
 }
