@@ -35,4 +35,45 @@ public class practise
         return longest;
 
     }
+    // BRUTE FORCE TC: O(N^2) 
+    static void find(int ar[]) {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < ar.length; i++) {
+            int length = 1;
+            int num = ar[i] + 1;
+            while (linear_search(num, ar) == true) {
+                length++;
+                num += 1;
+            }
+            max = Math.max(length, max);
+        }
+        System.out.println(max);
+    }
+
+    static boolean linear_search(int a, int num[]) {
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] == a)
+                return true;
+        }
+        return false;
+    }
+    //BETTER APPROACH TC : O(NLOGN) + O(N) SC: O(1) 
+    static void find_better(int ar[]) {
+        Arrays.sort(ar);
+        int just_smallest = Integer.MIN_VALUE;
+        int length = 1;
+        int count = 0;
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i] - 1 == just_smallest) {
+                count++;
+                just_smallest = ar[i];
+            } else if (ar[i] - 1 != just_smallest) {
+                count = 1;
+                just_smallest = ar[i];
+            }
+            length = Math.max(length, count);
+        }
+        System.out.println(length);
+
+    }
 }
