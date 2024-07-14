@@ -14,7 +14,7 @@ public class practise
             int mid = (low+high)/2;
             if(ar[mid] > x)
             {
-                ans = ar[mid];
+                ans = mid;
                 high = mid-1;
             } 
             else low = mid+1;   
@@ -32,7 +32,7 @@ public class practise
             int mid = (low+high)/2;
             if(ar[mid] >= x)
             {
-                ans = ar[mid];
+                ans = mid;
                 high = mid-1;
             } 
             else low = mid+1;   
